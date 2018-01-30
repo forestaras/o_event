@@ -1,0 +1,28 @@
+.jumbotron,.page-header,.row{
+    padding-left: 50px;
+}
+.event_info{
+    color: #286090;
+}
+.btn_event_info{
+    height: 50px;
+    width: 150px;
+    margin-top: 50px;
+}
+.event{
+    border-bottom: 1px solid #eee;
+}
+
+.add-event{
+    padding-bottom: 20px;
+}
+.login{
+    height: 100px;
+    width: 300px;
+    margin: auto;
+    margin-top: 200px;
+
+    padding-bottom: 50px;
+    background-color: #46b8da;
+    border:solid 2px cornflowerblue;
+}
