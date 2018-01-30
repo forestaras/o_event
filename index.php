@@ -27,7 +27,8 @@ $events=new Events();
 <?php $events->eventsg();?>
 </div>
 <footer class="container-fluid text-center">
-    <p>Footer Textt</p>
+    <p>Footer Texllltt</p>
+    <p>Footer Texllltt</p>
 </footer>
 </body>
 </html>
