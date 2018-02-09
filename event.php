@@ -1,6 +1,6 @@
 <?php include_once"inc/class.inc.php";
 $events=new Events();
-$spisok=new EventSpisok();
+$spisok=new SelectZayavkaTime();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,27 +26,16 @@ $spisok=new EventSpisok();
             <h4>Ч-21</h4>
             <table class="table table-striped">
                 <tr>
-                    <th>#</th>
-                    <th>Прізвище імя</th>
+                    <th>Прізвище Імя</th>
+                    <th>Рік народження</th>
                     <th>Група</th>
-                    <th>Рік наородження</th>
-                    <th>Розряд</th>
-                    <th>Команда</th>
+                    <th>Розрд</th>
                     <th>Тренер</th>
+                    <th>Команда</th>
                 </tr>
                 <?php
-                $spisok->select();
+                $spisok->selektAll();
                 ?>
-
-                <tr>
-                    <td>2</td>
-                    <td>Мельник Тарас</td>
-                    <td>Ч-21</td>
-                    <td>1993</td>
-                    <td>МСУ</td>
-                    <td>Вовки</td>
-                    <td>Мельник В.С.</td>
-                </tr>
             </table>
         </div>
     </div>

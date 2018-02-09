@@ -1,6 +1,7 @@
 <?php include_once"inc/class.inc.php";
 $events=new Events();
 $register=new Register();
+$select=new SelectZayavkaTime();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,6 @@ $register=new Register();
     <link rel="stylesheet" href="css/style.css">
     <?php
     include_once "inc/class.inc.php";
-    $select=new SelectZayavkaTime();
     ?>
 </head>
 <body>

@@ -89,16 +89,23 @@ class SelectZayavkaTime
     {
         global $conn;
         global $user_id;
-        $sql = "SELECT * FROM  atlets_time_registration t INNER JOIN atlets a ON t.id_atlets=a.id_atlets WHERE id_user=0";
+        $sql = "SELECT * FROM  atlets_time_registration t INNER JOIN atlets a ON t.id_atlets=a.id_atlets WHERE t.id_user='$_SESSION[id_user]' && t.id_events='$_GET[event]'";
         $res = mysqli_query($conn, $sql);
-
         while ($row = mysqli_fetch_assoc($res)) {
             echo "<tr><td>$row[name]</td><td>$row[birth]</td><td>$row[grup]</td><td>$row[rozryad]</td><td>$row[trener]</td><td>$row[club]</td>
-<td><a href='inc/delet.inc.php?del=$row[id_atlets]'><span class='glyphicon glyphicon-remove del' value='$row[id_atlets]' ></span><a></td></tr>";
+<td><a href='inc/delet.inc.php?del=$row[id_atlets]&event=$row[id_events]'><span class='glyphicon glyphicon-remove del' value='$row[id_atlets]' ></span><a></td></tr>";
         }
+    }
 
-//        $this->arr = $arr;
-//        print_r($arr);
+    public function selektAll()
+    {
+        global $conn;
+        global $user_id;
+        $sql = "SELECT * FROM  atlets_time_registration t INNER JOIN atlets a ON t.id_atlets=a.id_atlets WHERE t.id_events='$_GET[event]'";
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            echo "<tr><td>$row[name]</td><td>$row[birth]</td><td>$row[grup]</td><td>$row[rozryad]</td><td>$row[trener]</td><td>$row[club]</td></tr>";
+        }
     }
 }
 ////
