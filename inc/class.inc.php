@@ -111,7 +111,14 @@ class SelectZayavkaTime
 ////
 class Events
 {
-
+    public function addEvent(){
+        global $conn;
+        $x[]=$_POST;
+        foreach ($x as $ar) {
+            $sql = "INSERT INTO event (id_user,title,info,data,location) VALUE ('$_SESSION[id_user]','$ar[title]','$ar[info]','$ar[data]','$ar[lokation]')";
+            $res = mysqli_query($conn, $sql);
+        }
+    }
     public function eventsg()
     {
         global $conn;
@@ -149,11 +156,11 @@ class Events
     <p>$row[info]</p>
      </div>";
     }
-
     public function BottonRegister(){
         echo "<a href='register.php?event=$_GET[event]'><button type='button' class='btn btn-success right'>Реєстрація</button></a>";
     }
 }
+
 class EventSpisok{
     public function select()
     {
@@ -175,6 +182,7 @@ class EventSpisok{
         }
     }
 }
+
 class Register{
     public function add()
     {
@@ -248,3 +256,4 @@ WHERE id_atlets='$ar[id_atlets]'";
         }
     }
 }
+
