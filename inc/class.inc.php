@@ -85,11 +85,12 @@ class SelectZayavkaTime
 {
     public $arr;
 
-    public function selekt()
+    public function selekt($id_event,$id_user=fols)
     {
         global $conn;
-        global $user_id;
-        $sql = "SELECT * FROM  atlets_time_registration t INNER JOIN atlets a ON t.id_atlets=a.id_atlets WHERE t.id_user='$_SESSION[id_user]' && t.id_events='$_GET[event]'";
+        if($id_user==fols)
+        $sql = "SELECT * FROM  atlets_time_registration t INNER JOIN atlets a ON t.id_atlets=a.id_atlets WHERE t.id_events='$id_event'";
+        else $sql = "SELECT * FROM  atlets_time_registration t INNER JOIN atlets a ON t.id_atlets=a.id_atlets WHERE t.id_user='$id_user' && t.id_events='$id_event'";
         $res = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($res)) {
             echo "<tr><td>$row[name]</td><td>$row[birth]</td><td>$row[grup]</td><td>$row[rozryad]</td><td>$row[trener]</td><td>$row[club]</td>
@@ -124,7 +125,6 @@ class Events
         global $conn;
         $sql = "SELECT * FROM  event";
         $res = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($res);
         while ($row = mysqli_fetch_assoc($res)) {
             echo
             "<div class='row event'>
@@ -138,8 +138,9 @@ class Events
     </div>
     <div class='col-sm-4 text-center'>
         <a href='event.php?event=$row[id_event]'><button type='button' class='btn btn-success btn_event_info '>Реєстрація</button></a>
-        <h4>Учасників</h4>
-        <h3>8</h3>
+        <h4>Учасників</h4><h3>";
+        Events::EventCountRegistration($row[id_event]);
+        echo" </h3>
     </div>
 </div>";
         }
@@ -158,6 +159,22 @@ class Events
     }
     public function BottonRegister(){
         echo "<a href='register.php?event=$_GET[event]'><button type='button' class='btn btn-success right'>Реєстрація</button></a>";
+    }
+    public function EventCountRegistration($id_event=All,$id_user=All){
+        global $conn;
+        if($id_user==All){
+        $sql = "SELECT * FROM  atlets_time_registration WHERE id_events='$id_event'";
+        }
+        elseif($id_event==All){
+        $sql = "SELECT * FROM  atlets_time_registration WHERE id_user='$id_user'";
+        }
+        else $sql = "SELECT * FROM  atlets_time_registration WHERE id_user='$id_user'&& id_events='$id_event'";
+
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)){
+            $areu[]=$row;
+        }
+        echo count($areu);
     }
 }
 

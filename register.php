@@ -34,7 +34,8 @@ $select=new SelectZayavkaTime();
     </div>
     <div class="row">
         <div>
-            <h4>Додано</h4>
+
+            <h4>Додано <? Events::EventCountRegistration($_GET['event'], $_SESSION['id_user'])?></h4>
             <table class="table table-striped">
                 <tr>
                     <th>Прізвище Імя</th>
@@ -44,7 +45,7 @@ $select=new SelectZayavkaTime();
                     <th>Тренер</th>
                     <th>Команда</th>
                 </tr>
-                <?$select->selekt();?>
+                <? SelectZayavkaTime::selekt($_GET['event'],$_SESSION['id_user']);?>
             </table>
             <button type="button" id="btn" class="btn btn-success btn-right">Зберегти</button>
         </div>

@@ -29,8 +29,8 @@
                 <?if($user->autenf()=="Пароль ок")
                     echo" <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='glyphicon glyphicon-user'></span> $_SESSION[login] </a>
                                    <ul class='dropdown-menu'>
-                                   <li><a href='#'>Профіль</a></li>
-                                   <li><a href='#'>+Додати змагання</a></li>
+                                   <li><a href='profile.php'>Профіль</a></li>
+                                   <li><a href='add_event.html'>+Додати змагання</a></li>
                                    <li class='divider'></li>
                                    <li><a href='inc/user.inc.php?exit=exit'>Вийти</a></li>
                                    </ul>

@@ -19,8 +19,10 @@ $spisok=new SelectZayavkaTime();
 <div class="col-lg-12">
     <div class="col-sm-8 content">
         <? $events->EventMin() ?>
+        <h3>Зареєстровано <? Events::EventCountRegistration($_GET['event'])?> учасників</h3>
         <div class="col-sm-4 container text-center">
             <? $events->BottonRegister() ?>
+
         </div>
         <div class="col-sm-12">
             <h4>Ч-21</h4>
